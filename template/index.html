@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to Ali's Blog {% endblock %}</h1>
+    {% for post in posts %}
+    {{ post['title'] }}
+    <p>{{ post['id'] }}</p>
+        <a href="#">
+            <h2>{{ post['title'] | safe }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+          {{ post['content'] | safe }}
+          <a href="{{ url_for('post', post_id=post['id']) }}">
+            <span class="badge badge-warning">View</span>
+        	</a><br>
+          <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Edit</span>
+        	</a>
+        <hr>
+    {% endfor %}
+{% endblock %}
