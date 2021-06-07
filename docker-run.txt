@@ -1,0 +1,6 @@
+You can then build and run the Docker image:
+
+$ docker build -t my-python-app .
+$ docker run -it --rm --name my-running-app my-python-app
+
+docker run -p 9000:9000 --name pyweb-app00 pyweb-app00
