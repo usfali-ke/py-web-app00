@@ -22,9 +22,9 @@ def index():
 # Displaying single post
 def get_post(post_id):
 	conn = get_db_connection()
-	post = conn.execute('SELECT * FROM posts WHERE id = ?', (post_id)).fetchone()
+	#post = conn.execute('SELECT * FROM posts WHERE id = ?', (post_id)).fetchone()
 	#SQLi
-	#post = conn.execute('SELECT * FROM posts WHERE id = '+post_id).fetchone()
+	post = conn.execute('SELECT * FROM posts WHERE id = '+post_id).fetchone()
 	conn.close()
 	if post is None:
 		abort(404)
@@ -86,5 +86,5 @@ def delete(id):
 
 
 if __name__ == "__main__":
-    #app.run(debug=True, host='0.0.0.0', port=9000)
-    app.run(host='0.0.0.0', port=9000)
+    app.run(debug=True, host='0.0.0.0', port=9000)
+    #app.run(host='0.0.0.0', port=9000)
