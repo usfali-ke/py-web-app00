@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyweapptest-deployment
+  labels:
+    app: pyweapptest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pyweapptest
+  template:
+    metadata:
+      labels:
+        app: pyweapptest
+    spec:
+      containers:
+      - name: pyweapptest
+        image: pyweapptest
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pyweapptest-service
+spec:
+  selector:
+    app: pyweapptest
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+      nodePort: 30001
