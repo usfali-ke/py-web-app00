@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:kinetic
 
 WORKDIR /usr/src/app
 COPY requirements.txt ./
