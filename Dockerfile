@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:22.10
 
 WORKDIR /usr/src/app
 COPY requirements.txt ./
